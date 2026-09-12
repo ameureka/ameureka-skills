@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 安全问题（含凭据泄露）
+    url: https://github.com/ameureka/ameureka-skills/security/advisories/new
+    about: 请不要开公开 issue 报告安全问题，用私密渠道。
