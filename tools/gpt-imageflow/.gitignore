@@ -1,0 +1,24 @@
+# 配置与密钥
+.env
+*.env
+!*.env.example
+
+# 运行时产物
+usage.jsonl
+probe-result.json
+_probe-out/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# 出图产物
+*.png
+*.webp
+*.jpg
+!tests/fixtures/*.png

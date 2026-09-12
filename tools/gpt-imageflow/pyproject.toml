@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt-imageflow"
+version = "1.0.0"
+description = "走 OpenAI 兼容中转的 gpt-image-2 出图组件（从 ameureka-media-agent imageflow 抽离）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "amerlin" }]
+dependencies = [
+    "pillow>=10.0",   # cover.py 的人脸参考图处理
+]
+
+[project.scripts]
+gpt-imageflow = "gpt_imageflow.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools]
+packages = ["gpt_imageflow"]

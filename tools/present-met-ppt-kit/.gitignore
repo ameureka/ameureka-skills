@@ -1,0 +1,10 @@
+node_modules/
+.pytest_cache/
+__pycache__/
+*.pyc
+fixtures/*/html/
+fixtures/*/preview/
+fixtures/*/assets/
+fixtures/*/*.pptx
+*.log
+.DS_Store

@@ -1,0 +1,2 @@
+# gpt-imageflow 依赖（只用于 cover.py 的人脸参考图处理；纯出图可不需要）
+pillow>=10.0

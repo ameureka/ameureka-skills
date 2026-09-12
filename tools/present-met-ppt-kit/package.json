@@ -1,0 +1,28 @@
+{
+  "name": "present-met-ppt-kit",
+  "version": "0.1.0",
+  "description": "分享会专属 HTML 到 PPTX 构建工具链",
+  "type": "commonjs",
+  "bin": {
+    "ppt-kit": "bin/ppt-kit.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "node --check bin/ppt-kit.js && node --check scripts/*.js && python3 -m py_compile scripts/verify_pptx.py",
+    "crop": "node scripts/crop.js",
+    "generate": "node scripts/generate.js",
+    "fit": "node scripts/fit.js",
+    "screenshot": "node scripts/screenshot.js",
+    "build": "node scripts/build.js",
+    "pipeline": "node scripts/pipeline.js",
+    "validate": "node scripts/pipeline.js --no-build"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0",
+    "pptxgenjs": "^4.0.1",
+    "sharp": "^0.34.3"
+  }
+}

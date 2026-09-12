@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSD 方法论流程教学示意图</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: rgba(20, 24, 33, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            
+            --color-spec: #00f0ff;
+            --color-state: #ff007f;
+            --color-distill: #ffaa00;
+            --color-success: #39d353;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-primary);
+            font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-spec) 0%, var(--color-state) 50%, var(--color-distill) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* 流程图主容器 */
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1280px;
+            position: relative;
+        }
+
+        /* 阶段卡片 */
+        .phase-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        /* 阶段颜色区分 */
+        .phase-specification {
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+        .phase-specification::before {
+            background: var(--color-spec);
+            box-shadow: 0 0 15px var(--color-spec);
+        }
+
+        .phase-state {
+            border-top: 1px solid rgba(255, 0, 127, 0.2);
+        }
+        .phase-state::before {
+            background: var(--color-state);
+            box-shadow: 0 0 15px var(--color-state);
+        }
+
+        .phase-distill {
+            border-top: 1px solid rgba(255, 170, 0, 0.2);
+        }
+        .phase-distill::before {
+            background: var(--color-distill);
+            box-shadow: 0 0 15px var(--color-distill);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 1rem;
+        }
+
+        .phase-title-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .phase-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            opacity: 0.8;
+        }
+
+        .phase-title-badge h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .phase-specification .phase-title-badge { color: var(--color-spec); }
+        .phase-state .phase-title-badge { color: var(--color-state); }
+        .phase-distill .phase-title-badge { color: var(--color-distill); }
+
+        .phase-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 内部网格逻辑步骤 */
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 1.25rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .step-card .badge {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .phase-specification .step-card .badge { background: rgba(0, 240, 255, 0.1); color: var(--color-spec); }
+        .phase-state .step-card .badge { background: rgba(255, 0, 127, 0.1); color: var(--color-state); }
+        .phase-distill .step-card .badge { background: rgba(255, 170, 0, 0.1); color: var(--color-distill); }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* 特殊判定与循环指示器 */
+        .logic-card {
+            border: 1px dashed rgba(255, 0, 127, 0.3);
+            background: rgba(255, 0, 127, 0.02);
+        }
+
+        .loop-badge {
+            background: var(--color-state) !important;
+            color: white !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 0, 127, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+        }
+
+        /* 阶段之间的指向箭头 */
+        .flow-connector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 1.8rem;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* 循环回流逻辑提示 */
+        .loop-return-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 170, 0, 0.05);
+            border: 1px solid rgba(255, 170, 0, 0.15);
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-distill);
+        }
+
+        .loop-return-indicator span {
+            font-weight: 700;
+        }
+
+        /* 返回首页或说明的页脚 */
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Specification-State-Distill (SSD) 模式开发教学图</h1>
+        <p>适合 AI 时代独立黑客（Indie Hacker）与协同开发团队的高合规、低漏洞工程闭环</p>
+    </header>
+
+    <div class="flowchart-container">
+
+        <!-- 阶段一 -->
+        <section class="phase-section phase-specification">
+            <div class="phase-header">
+                <div class="phase-title-badge">
+                    <span class="phase-num">01</span>
+                    <h2>Specification (规范定义与对抗审计)</h2>
+                </div>
+                <span class="phase-subtitle">核心目标：消除开发盲区，物理化契约</span>
+            </div>
+            
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="badge">步骤 1.1</span>
+                    <h3>模糊需求输入</h3>
+                    <p>录入原始商业想法或开发需求，由于存在不确定性，此时往往存在大量开发盲区（Unknowns）。</p>
+                </div>
+                <div class="step-card">
+                    <span class="badge">步骤 1.2</span>
+                    <h3>8维盲区审计</h3>
+                    <p>通过 `blindspot-audit` 针对 ACC(准确性)、COV(覆盖率)、USE(可用性) 等 8 个维度展开全方位对抗审查。</p>
+                </div>
+                <div class="step-card">
+                    <span class="badge">步骤 1.3</span>
+                    <h3>象限对抗与证伪</h3>
+                    <p>对发掘的盲区进行校验，过滤假阳性噪点，决策分类后写入总账单，输出物理 specs 契约与行动 Plan。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 箭头 -->
+        <div class="flow-connector">👇</div>
+
+        <!-- 阶段二 -->
+        <section class="phase-section phase-state">
+            <div class="phase-header">
+                <div class="phase-title-badge">
+                    <span class="phase-num">02</span>
+                    <h2>State (状态验证与双跑测试门禁)</h2>
+                </div>
+                <span class="phase-subtitle">核心目标：确保状态正确，物理防异变</span>
+            </div>
+            
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="badge">步骤 2.1</span>
+                    <h3>AI 自动开发 Loop</h3>
+                    <p>AI 助手载入 Spec 契约和 Plan 任务清单，在受控的 workspace 中进行代码编写并循环运行。</p>
+                </div>
+                <div class="step-card">
+                    <span class="badge">步骤 2.2</span>
+                    <h3>真实集成双跑</h3>
+                    <p>拒绝 mock。对敏感数据和复杂交易，接入本地 PostgreSQL 真实数据库执行双跑校验，保障状态前后守恒。</p>
+                </div>
+                <div class="step-card logic-card">
+                    <span class="badge loop-badge">判定与拦截 (Mutation Gate)</span>
+                    <h3>变异门禁守卫</h3>
+                    <p>检测到不符合 Specs 契约的越权或错误状态修改？<br>
+                    <strong>❌ 是</strong>：拒绝并阻断，自动返回步骤 2.1 重跑。<br>
+                    <strong>✅ 否</strong>：通过门禁，达成契约（Goal Achieved）。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 箭头 -->
+        <div class="flow-connector">👇</div>
+
+        <!-- 阶段三 -->
+        <section class="phase-section phase-distill">
+            <div class="phase-header">
+                <div class="phase-title-badge">
+                    <span class="phase-num">03</span>
+                    <h2>Distill (踩坑教训蒸馏与反哺)</h2>
+                </div>
+                <span class="phase-subtitle">核心目标：沉淀团队记忆，完成系统迭代</span>
+            </div>
+            
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="badge">步骤 3.1</span>
+                    <h3>收集拦截日志</h3>
+                    <p>收集在 State 验证阶段被门禁拦截的现场、安全防护（Safeguards）报错、以及环境污染的详细数据。</p>
+                </div>
+                <div class="step-card">
+                    <span class="badge">步骤 3.2</span>
+                    <h3>本质教训蒸馏</h3>
+                    <p>剥离表面报错噪声，提炼出具有普适性的经验规则，比如“如何设计防范 API 降级的探测机制”。</p>
+                </div>
+                <div class="step-card">
+                    <span class="badge">步骤 3.3</span>
+                    <h3>回填知识库 (References)</h3>
+                    <p>将教训写入本地 references 引用库或 AI 本地的记忆（claudemem），更新 CLAUDE.md 中系统协同规则。</p>
+                </div>
+            </div>
+
+            <!-- 循环回流逻辑提示 -->
+            <div class="loop-return-indicator">
+                🔄 <span>反哺闭环逻辑：</span> 步骤 3.3 的成果将直接回填并融入到下一次的 **01 阶段** 盲区审计维度库中，保证团队在面对新迭代时永不踩同一个坑。
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>AI 兴趣小组 · 周六线上分享会版权所有 | SSD 研发方法论工程规范演示页面</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+# ── 密钥与本地配置（切勿提交真实凭证）────────────────────────
+.env
+*.env
+!.env.example
+.env.local
+*.key
+*.pem
+secrets/
+*.secret
+
+# ── 运行时产物 ──────────────────────────────────────────────
+usage.jsonl
+probe-result.json
+_probe-out/
+*.log
+
+# ── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+dist/
+build/
+.venv/
+venv/
+
+# ── Node ───────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ── 构建产物 ────────────────────────────────────────────────
+*.pptx
+*.webp
+
+# ── macOS ──────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+._*
+
+# ── 编辑器 ──────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp

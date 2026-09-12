@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 300" role="img">
+<title>REPLACE — one-line diagram title</title>
+<desc>REPLACE — one-sentence description of what this architecture diagram shows, for screen readers.</desc>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+.t{font-size:14px}.ts{font-size:12px}.th{font-size:14px;font-weight:500}
+.arr{stroke:#888780;stroke-width:1.5;fill:none}.leg{fill:#6f6e69}
+.zone{fill:none;stroke-width:1.2;stroke-dasharray:6 4}
+.n-gray{fill:#F1EFE8;stroke:#5F5E5A;stroke-width:1}.tx-gray{fill:#2C2C2A}.tx-gray-s{fill:#5F5E5A}
+.n-blue{fill:#E6F1FB;stroke:#185FA5;stroke-width:1}.tx-blue{fill:#0C447C}.tx-blue-s{fill:#185FA5}
+.n-purple{fill:#EEEDFE;stroke:#534AB7;stroke-width:1}.tx-purple{fill:#3C3489}.tx-purple-s{fill:#534AB7}
+@media (prefers-color-scheme:dark){
+.leg{fill:#B4B2A9}.arr{stroke:#B4B2A9}
+.n-gray{fill:#2C2C2A;stroke:#B4B2A9}.tx-gray{fill:#F1EFE8}.tx-gray-s{fill:#D3D1C7}
+.n-blue{fill:#0C447C;stroke:#85B7EB}.tx-blue{fill:#E6F1FB}.tx-blue-s{fill:#B5D4F4}
+.n-purple{fill:#3C3489;stroke:#AFA9EC}.tx-purple{fill:#EEEDFE}.tx-purple-s{fill:#CECBF6}}
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="40" y="60" width="240" height="140" rx="16" class="zone" stroke="#993C1D"/>
+<text class="th tx-gray" x="56" y="80" dominant-baseline="central">公网（不可信）</text>
+
+<rect x="400" y="60" width="240" height="140" rx="16" class="zone" stroke="#0F6E56"/>
+<text class="th tx-gray" x="416" y="80" dominant-baseline="central">内网（可信）</text>
+
+<rect x="70" y="110" width="180" height="56" rx="8" class="n-gray"/>
+<text class="th tx-gray" x="160" y="130" text-anchor="middle" dominant-baseline="central">组件 A</text>
+<text class="ts tx-gray-s" x="160" y="150" text-anchor="middle" dominant-baseline="central">≤14 汉字副标题</text>
+
+<rect x="430" y="110" width="180" height="56" rx="8" class="n-blue"/>
+<text class="th tx-blue" x="520" y="130" text-anchor="middle" dominant-baseline="central">组件 B</text>
+<text class="ts tx-blue-s" x="520" y="150" text-anchor="middle" dominant-baseline="central">按类别着色</text>
+
+<line x1="250" y1="138" x2="430" y2="138" class="arr" marker-end="url(#arrow)"/>
+<text class="ts leg" x="340" y="128" text-anchor="middle" dominant-baseline="central">HTTPS</text>
+
+<rect x="40" y="250" width="14" height="14" rx="3" class="n-gray"/>
+<text class="ts leg" x="60" y="257" dominant-baseline="central">用户 / 通用</text>
+<rect x="200" y="250" width="14" height="14" rx="3" class="n-blue"/>
+<text class="ts leg" x="220" y="257" dominant-baseline="central">接入产品</text>
+</svg>
