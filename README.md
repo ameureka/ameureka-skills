@@ -22,6 +22,8 @@ tools/    独立命令行工具 —— 需要 npm install / pip install
 assets/   独立素材（如教学示意图 HTML）
 ```
 
+> 📊 **[SSD 方法论流程示意图](https://ameureka.github.io/ameureka-skills/assets/ssd-methodology-dashboard.html)** —— 交互式教学图，展示规范驱动开发的 7 阶段流转与关键产物。（GitHub 不渲染 HTML，需经上面的 Pages 链接打开）
+
 ## 一条完整链路
 
 其中 4 个 skill 是**串起来的**——前一个的产出就是后一个的输入，适合「先摸清现状，再落成代码」这类大改动：

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ameureka-skills — AI Code Assistant Skills 集合</title>
+<meta name="description" content="7 个提示词型 skill + 2 个 CLI 工具：规范驱动开发、盲区审计、需求矩阵、FPF 推理、loop 提示词、企业架构 SVG、Agent 交接。">
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --border:#30363d;
+    --fg:#e6edf3; --muted:#8b949e; --accent:#58a6ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; --fg:#1f2328; --muted:#656d76; --accent:#0969da; }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:48px 24px 64px;
+    background:var(--bg); color:var(--fg);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  h1{font-size:30px;line-height:1.3;margin:0 0 8px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 32px}
+  .sub code{background:var(--card);padding:2px 6px;border-radius:4px;border:1px solid var(--border);font-size:.9em}
+  a{color:var(--accent)}
+  .card{
+    display:block;background:var(--card);border:1px solid var(--border);
+    border-radius:10px;padding:20px 22px;margin:0 0 24px;text-decoration:none;color:inherit;
+    transition:border-color .15s ease;
+  }
+  .card:hover{border-color:var(--accent)}
+  .card h2{margin:0 0 6px;font-size:19px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .card .go{margin-top:12px;font-size:14px}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:32px 0 12px;font-weight:600}
+  ul{margin:0;padding-left:20px}
+  li{margin:5px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+  .grid a{
+    display:block;padding:12px 14px;background:var(--card);
+    border:1px solid var(--border);border-radius:8px;text-decoration:none;
+  }
+  .grid a:hover{border-color:var(--accent)}
+  .grid strong{display:block;font-size:14px}
+  .grid span{font-size:13px;color:var(--muted)}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>ameureka-skills</h1>
+  <p class="sub">一套 <a href="https://claude.com/claude-code">AI Code Assistant</a> Skills 集合：<strong>7 个提示词型 skill + 2 个独立 CLI 工具</strong>。MIT 协议。</p>
+
+  <a class="card" href="assets/ssd-methodology-dashboard.html">
+    <h2>📊 SSD 方法论流程示意图</h2>
+    <p>交互式教学示意图，展示规范驱动开发（Spec-Driven Development）的 7 阶段流转与关键产物。</p>
+    <div class="go">打开示意图 →</div>
+  </a>
+
+  <h3>Skills</h3>
+  <div class="grid">
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/ameureka-spec-dev"><strong>ameureka-spec-dev</strong><span>7 阶段规范驱动开发</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/blindspot-audit"><strong>blindspot-audit</strong><span>重构前的多维盲区审计</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/requirements-matrix-generator"><strong>requirements-matrix-generator</strong><span>审计报告 → 需求矩阵</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/fpf-reasoning"><strong>fpf-reasoning</strong><span>第一性原理推理 + R_eff</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/loop-prompt-generator"><strong>loop-prompt-generator</strong><span>可停止的 loop 提示词</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/enterprise-svg-architect"><strong>enterprise-svg-architect</strong><span>企业架构 / 拓扑 SVG</span></a>
+    <a href="https://github.com/ameureka/ameureka-skills/tree/main/skills/cowork-sync"><strong>cowork-sync</strong><span>Agent 之间的交接接手</span></a>
+  </div>
+
+  <h3>Tools</h3>
+  <ul>
+    <li><a href="https://github.com/ameureka/ameureka-skills/tree/main/tools/gpt-imageflow">gpt-imageflow</a> — 经 OpenAI 兼容中转的 gpt-image-2 出图 CLI（需自备 key）</li>
+    <li><a href="https://github.com/ameureka/ameureka-skills/tree/main/tools/present-met-ppt-kit">present-met-ppt-kit</a> — HTML → PPTX 构建工具链</li>
+  </ul>
+
+  <h3>安装</h3>
+  <ul>
+    <li><code>cp -r skills/&lt;name&gt; ~/.ai-config/skills/</code></li>
+    <li>或 symlink：<code>ln -s "$(pwd)/skills/&lt;name&gt;" ~/.ai-config/skills/&lt;name&gt;</code></li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/ameureka/ameureka-skills">GitHub 仓库</a> ·
+    <a href="https://github.com/ameureka/ameureka-skills#readme">README</a> ·
+    MIT License
+  </footer>
+
+</div>
+</body>
+</html>
